@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Book Shop</title>
+  </head>
+  <body onload="onInit()">
+    <section class="main-table">
+      <div class="create-book">
+        <h4 class="create-book-btn" onmousemove="displayInputs()" onclick="onAddBook()">
+          Create new book
+        </h4>
+        <div class="book-inputs" hidden>
+          <input type="text" class="book-name-input" placeholder="Book Name" />
+          <input type="number" class="book-price-input" placeholder="Book Price" />
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <td onclick="onSetSortBy('id')">Id</td>
+            <td onclick="onSetSortBy('name')">Title</td>
+            <td onclick="onSetSortBy('price')">Price</td>
+            <td onclick="onSetSortBy('rating')">Rating</td>
+            <td colspan="3">Actions</td>
+          </tr>
+        </thead>
+        <tbody class="books-tbody"></tbody>
+      </table>
+
+      <div class="pages-moves">
+        <button onclick="onSetNextPage(-1)"><<</button>
+        <div class="pages-btns"></div>
+        <button onclick="onSetNextPage(1)">>></button>
+      </div>
+    </section>
+
+    <div class="modal hidden">
+      <h3></h3>
+      <img class="book-image" src="" alt="" width="250px" height="400px" />
+      <h4>Book Rating <span class="rating"></span></h4>
+      <div class="rating-bar">
+        <button onclick="onChangeRating(-1)">-</button>
+        <input type="number" name="" class="rating-value" value="1" min="1" max="10" />
+        <button onclick="onChangeRating(1)">+</button>
+      </div>
+      <h5>Book Description</h5>
+      <p></p>
+      <button onclick="onCloseModal()">Close</button>
+    </div>
+    <div class="user-msg"></div>
+    <div class="overlay hidden" onclick="onCloseModal()"></div>
+
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+  </body>
+</html>
